@@ -1,0 +1,65 @@
+@tailwind utilities;
+
+@layer utilities {
+	.px-base {
+		@apply px-[20px]  laptop:px-[40px];
+	}
+	.py-base {
+		@apply py-[20px];
+	}
+	.layout-in {
+		@apply py-[40px] px-base;
+	}
+	.layout-out {
+		@apply max-w-[1920px] mx-auto;
+	}
+	.layout-block {
+		@apply p-[10px] tablet:p-[15px];
+	}
+	.mt1 {
+		@apply mt-[10px];
+	}
+	.mt2 {
+		@apply mt-[20px];
+	}
+	.mt4 {
+		@apply mt-[40px];
+	}
+	.ml1 {
+		@apply ml-[10px];
+	}
+	.ml2 {
+		@apply ml-[20px];
+	}
+	.ml4 {
+		@apply ml-[40px];
+	}
+	.centreFlex {
+		@apply flex justify-center items-center;
+	}
+	.bg-primary {
+		@apply bg-[#FFFFFF];
+	}
+	.bg-secondary {
+		@apply bg-[#F5F5F5];
+	}
+	.bg-select {
+		@apply bg-[#00A7C2];
+	}
+	.rad-base {
+		border-radius: 14px;
+	}
+	.rad-small {
+		border-radius: 5px;
+	}
+	.bg-blue-sky {
+		background: linear-gradient(90deg, #35d5ea 0%, #00a7c2 100%);
+	}
+	.border-dash {
+		border: 10px solid transparent;
+		border-image: url(/images/photos/border.png) 10;
+	}
+	.border-blue-sky {
+		border: 1px solid #35d5ea;
+	}
+}

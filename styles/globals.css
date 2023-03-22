@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+
+@import 'text.css';
+@import 'layout.css';
+@import 'normalCss.css';
+
+@layer base {
+}

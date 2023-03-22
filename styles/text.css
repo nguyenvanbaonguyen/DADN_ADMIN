@@ -1,0 +1,70 @@
+@tailwind utilities;
+
+@layer utilities {
+	.text-up {
+		@apply text-[#00B69B];
+	}
+	.text-down {
+		@apply text-[#F93C65];
+	}
+	.text-select {
+		@apply text-[#00A7C2];
+	}
+	.text-primary {
+		@apply text-[#000000];
+	}
+	.text-secondary {
+		@apply text-[#202224];
+	}
+	.text-10-14 {
+		@apply text-[10px] leading-[14px];
+	}
+	.text-12-9 {
+		@apply text-[12px] leading-[9px];
+	}
+	.text-12-10 {
+		@apply text-[12px] leading-[10px];
+	}
+	.text-12-16 {
+		@apply text-[12px] leading-[16px];
+	}
+	.text-12-18 {
+		@apply text-[12px] leading-[18px];
+	}
+	.text-14-17 {
+		@apply text-[14px] leading-[17px];
+	}
+	.text-14-19 {
+		@apply text-[14px] leading-[19px];
+	}
+	.text-16-20 {
+		@apply text-[16px] leading-[20px];
+	}
+	.text-16-22 {
+		@apply text-[16px] leading-[22px];
+	}
+	.text-18-22 {
+		@apply text-[18px] leading-[22px];
+	}
+	.text-20-24 {
+		@apply text-[20px] leading-[24px];
+	}
+	.text-20-25 {
+		@apply text-[20px] leading-[25px];
+	}
+	.text-24-20 {
+		@apply text-[24px] leading-[20px];
+	}
+	.text-24-29 {
+		@apply text-[24px] leading-[29px];
+	}
+	.text-24-32 {
+		@apply text-[24px] leading-[32px];
+	}
+	.text-28-38 {
+		@apply text-[28px] leading-[38px];
+	}
+	.text-20-49 {
+		@apply text-[20px] leading-[49px];
+	}
+}
