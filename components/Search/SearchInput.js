@@ -10,7 +10,6 @@ const SearchInput = ({ className, children }) => {
 
 	const handleChangeInput = (e) => {
 		setValue(e.target.value);
-
 		if (debounceRef.current) clearTimeout(debounceRef.current);
 		debounceRef.current = setTimeout(() => {
 			dispatch(setText(e.target.value));

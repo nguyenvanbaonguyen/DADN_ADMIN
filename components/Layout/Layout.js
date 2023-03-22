@@ -2,20 +2,17 @@ import Head from 'next/head';
 import Header from '../Header/Header';
 import LoginPage from '../Login/LoginPage';
 import Sidebar from '../Sidebar/Sidebar';
-import withAuthAdmin from '@/hoc/withAuthAdmin';
-import { getIsAdmin } from '@/redux/user';
-import { useSelector } from 'react-redux';
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 
 const Layout = ({ children }) => {
-	const login = useSelector(getIsAdmin);
 	const mainRef = useRef();
 	const router = useRouter();
 	useEffect(() => {
 		if (!mainRef.current) return;
 		mainRef.current.scrollTo({ top: 0 });
 	}, [router]);
+	const login = true;
 	return (
 		<>
 			<Head>
@@ -44,4 +41,4 @@ const Layout = ({ children }) => {
 	);
 };
 
-export default withAuthAdmin(Layout);
+export default Layout;
