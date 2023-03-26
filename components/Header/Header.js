@@ -14,11 +14,16 @@ const Header = () => {
 				/>
 			</div>
 			<div className="flex">
-				<p className="text-16-20 font-bold">Bao Nguyen</p>
+				{/* <p className="text-16-20 font-bold">Bao Nguyen</p> */}
 				<div className="p-[6px] bg-[#D9D9D9] rounded-full ml-[10px]">
 					<Image src="/images/icons/user.svg" height={18} width={18} alt="" />
 				</div>
+
+				<div className="p-[6px] ml-[10px]">
+					<Image src="/images/icons/menu.svg" height={18} width={18} alt="" />
+				</div>
 			</div>
+
 		</div>
 	);
 };

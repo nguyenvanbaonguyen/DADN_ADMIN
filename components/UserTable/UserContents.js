@@ -11,7 +11,7 @@ const UserContents = () => {
 		fullName: 'Nguyen Van Bao Nguyen',
 		phone: '0905824884',
 		email: 'nguyenvanbaonguyen@gmail.com',
-		status: 'active',
+		status: 'ACTIVE',
 	};
 	const list = new Array(10).fill(0);
 	return (
@@ -24,7 +24,7 @@ const UserContents = () => {
 					<div className="flex items-center">
 						<ButtonTick index={index} />
 					</div>
-					<div className="self-center">{(1 * 1 - 1) * 10 + index}</div>
+					<div className="self-center">{1 + index}</div>
 					<div className="col-span-3 flex items-center">
 						<Image
 							width={100}
@@ -36,11 +36,11 @@ const UserContents = () => {
 						<p className="ml-4 font-bold capitalize">{user.fullName}</p>
 					</div>
 					<div className="col-span-1 text-center self-center">{user.phone}</div>
-					<div className="col-span-3 text-right self-center">{user.email}</div>
-					<div className="col-span-2 flex justify-end">
+					<div className="col-span-3 text-center self-center">{user.email}</div>
+					<div className="col-span-2 flex justify-center">
 						<ButtonActive status={user.status} id={user._id} />
 					</div>
-					<div className="flex justify-end items-center">
+					<div className="flex justify-center items-center">
 						<ButtonIcon icon="pen" />
 					</div>
 				</div>

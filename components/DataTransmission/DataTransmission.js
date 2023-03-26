@@ -101,7 +101,7 @@ const data = {
 	],
 };
 
-const SaleChart = () => {
+const DataTransmission = () => {
 	const chartRef = useRef();
 	const [chartData, setChartData] = useState({
 		datasets: [],
@@ -124,7 +124,7 @@ const SaleChart = () => {
 	return (
 		<div className={` px-[10px] duration-500 laptop:px-[30px] pb-[50px] `}>
 			<div className="h-[100px] flex items-center justify-between ">
-				<h2 className="text-24-20 font-bold">Sales Details</h2>
+				<h2 className="text-24-20 font-bold">Data Transmission</h2>
 				<MonthSelect />
 			</div>
 			<Line ref={chartRef} options={options} data={chartData} height={180} />
@@ -132,4 +132,4 @@ const SaleChart = () => {
 	);
 };
 
-export default SaleChart;
+export default DataTransmission;

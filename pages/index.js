@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Dashboard from '@/components/Dashboard/Dashboard';
 
-export default function Home() {
+function Home() {
 	return (
 		<div>
 			<main >
@@ -10,3 +10,5 @@ export default function Home() {
 		</div>
 	);
 }
+
+export default Home;

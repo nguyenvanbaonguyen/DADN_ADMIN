@@ -41,7 +41,7 @@
 		@apply bg-[#FFFFFF];
 	}
 	.bg-secondary {
-		@apply bg-[#F5F5F5];
+		@apply bg-[#DEF0FC];
 	}
 	.bg-select {
 		@apply bg-[#00A7C2];

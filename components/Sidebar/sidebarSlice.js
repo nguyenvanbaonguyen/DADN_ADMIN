@@ -4,8 +4,8 @@ export const sibarSlice = createSlice({
 	name: 'sidebar',
 	initialState: {
 		site: 'dashboard',
-		sidebarContents: ['dashboard', 'users'],
-		isOpen: false,
+		sidebarContents: ['dashboard', 'users', 'devices', 'posts'],
+		isOpen: true,
 	},
 	reducers: {
 		changeContent: (state, action) => {

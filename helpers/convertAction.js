@@ -1,5 +1,5 @@
 const toAction = (status) => {
-	if (status == 'ACTIVE' || status == 'PUBLISHED') return 'Activate';
+	if (status == 'ACTIVE') return 'Activate';
 	else return 'Deactivate';
 };
 const switchAction = (action) => {

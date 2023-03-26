@@ -1,24 +1,24 @@
 import React from 'react';
 import Paginate from '../Paginate/Paginate';
-import UserAdd from './UserAdd';
-import UserContents from './UserContents';
-import UserHeader from './UserHeader';
-import UserSearch from './UserSearch';
+import DeviceAdd from './DeviceAdd';
+import DeviceContents from './DeviceContents';
+import DeviceHeader from './DeviceHeader';
+import DeviceSearch from './DeviceSearch';
 
-const UserTable = () => {
+const DeviceTable = () => {
 	return (
 		<div>
 			<div
 				className={`flex px-base py-[25px] justify-between bg-primary bg-primary rad-small items-center mt4 w-full `}
 			>
-				<UserSearch />
-				<UserAdd />
+				<DeviceSearch />
+				<DeviceAdd />
 			</div>
 
 			<div className="overflow-auto hide-scroll max-w-[calc(100vw-20px)] tablet:max-w-auto">
 				<div className="min-w-[1100px]">
-					<UserHeader />
-					<UserContents />
+					<DeviceHeader />
+					<DeviceContents />
 				</div>
 			</div>
 			<Paginate />
@@ -26,4 +26,4 @@ const UserTable = () => {
 	);
 };
 
-export default UserTable;
+export default DeviceTable;
