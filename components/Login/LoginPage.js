@@ -6,7 +6,7 @@ const LoginPage = () => {
 	return (
 		<div className="bg-primary layout-out centreFlex flex-col w-full min-h-[100vh] px-base ">
 			<h1 className="text-[36px] leading-[44px] tablet:text-[96px] tablet:leading-[120px] font-bold">
-				<span className="text-select">GrowFi</span> Admin
+				<span className="text-select">PetCare</span> Admin
 			</h1>
 
 			<form className="mt-[10px] tablet:mt4 w-full centreFlex  flex-col text-16-20 tablet:text-18-22">

@@ -1,8 +1,8 @@
 import handleCheckError from '@/helpers/handleCheckError';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import {useDispatch} from "react-redux";
-import {loginUserAsync} from "@/redux/user";
+import { useDispatch } from "react-redux";
+// import {loginUserAsync} from "@/redux/user";
 const Login = () => {
     const {
         register,
@@ -13,11 +13,11 @@ const Login = () => {
     const dispatch = useDispatch();
 
     const onSubmit = async (data) => {
-        try {
-            await dispatch(loginUserAsync(data));
-        } catch (error) {
-            console.log(error);
-        }
+        // try {
+        //     await dispatch(loginUserAsync(data));
+        // } catch (error) {
+        //     console.log(error);
+        // }
     };
 
     return (
@@ -42,8 +42,8 @@ const Login = () => {
                 </div>
                 {errors.email && (
                     <span className="max-w-[450px] mt1 w-full font-semibold text-red-400">
-						{handleCheckError(errors.email, 'Email')}
-					</span>
+                        {handleCheckError(errors.email, 'Email')}
+                    </span>
                 )}
                 <div className="max-w-[450px] mt2 bg-secondary w-full  p-[20px] shadow-login rad-base">
                     <input
@@ -58,13 +58,12 @@ const Login = () => {
                 </div>
                 {errors.password && (
                     <span className="max-w-[450px] mt1 w-full font-semibold  text-red-400">
-						{handleCheckError(errors.password, 'Password', 8)}
-					</span>
+                        {handleCheckError(errors.password, 'Password', 8)}
+                    </span>
                 )}
                 <button
-                    className={`max-w-[450px] mt2 w-full  p-[20px]  rounded-[100px] centreFlex text-14-17 font-bold text-white ${
-                        isValid ? 'bg-blue-sky' : 'bg-[#7A8286]'
-                    }`}
+                    className={`max-w-[450px] mt2 w-full  p-[20px]  rounded-[100px] centreFlex text-14-17 font-bold text-white ${isValid ? 'bg-blue-sky' : 'bg-[#7A8286]'
+                        }`}
                 >
                     Continue
                 </button>

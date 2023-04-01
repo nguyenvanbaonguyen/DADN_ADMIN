@@ -10,7 +10,7 @@ const HeaderSide = () => {
 			<>
 				<div className="flex">
 					<Image
-						src="/images/logos/growFi.svg"
+						src="/images/logos/petcare.png"
 						height={23}
 						width={95}
 						alt=""
