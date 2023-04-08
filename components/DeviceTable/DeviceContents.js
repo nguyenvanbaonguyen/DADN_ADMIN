@@ -5,6 +5,8 @@ import ButtonActive from '../ButtonList/ButtonActive';
 import ButtonIcon from '../ButtonList/ButtonIcon';
 import ButtonTick from '../ButtonList/ButtonTick';
 import LoadingWrapper from '../Loading/LoadingWrapper';
+import { useDispatch } from 'react-redux';
+import { toggleDetail } from './deviceSlice';
 
 const DeviceContents = () => {
 	const device = {
@@ -14,7 +16,12 @@ const DeviceContents = () => {
 		userEmail: 'nguyenvanbaonguyen@gmail.com',
 		status: 'ACTIVE',
 	};
+	const dispatch = useDispatch();
+
 	const list = new Array(10).fill(0);
+	const handleOnClick = () => {
+		dispatch(toggleDetail());
+	}
 	return (
 		<LoadingWrapper isLoading={false}>
 			{list.map((_, index) => (
@@ -34,7 +41,7 @@ const DeviceContents = () => {
 						<ButtonActive status={device.status} id={device._id} />
 					</div>
 					<div className="col-span-1 flex justify-center items-center">
-						<ButtonIcon icon="pen" />
+						<ButtonIcon icon="pen" action={() => handleOnClick()} />
 					</div>
 				</div>
 			))}

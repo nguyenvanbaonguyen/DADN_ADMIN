@@ -4,24 +4,30 @@ import DeviceAdd from './DeviceAdd';
 import DeviceContents from './DeviceContents';
 import DeviceHeader from './DeviceHeader';
 import DeviceSearch from './DeviceSearch';
+import { useSelector } from 'react-redux';
+import { getIsDetail } from './deviceSlice';
+import DeviceDetail from './DeviceDetail';
 
 const DeviceTable = () => {
+	const isDeltail = useSelector(getIsDetail);
 	return (
 		<div>
-			<div
-				className={`flex px-base py-[25px] justify-between bg-primary bg-primary rad-small items-center mt4 w-full `}
-			>
-				<DeviceSearch />
-				<DeviceAdd />
-			</div>
-
-			<div className="overflow-auto hide-scroll max-w-[calc(100vw-20px)] tablet:max-w-auto">
-				<div className="min-w-[1100px]">
-					<DeviceHeader />
-					<DeviceContents />
+			{isDeltail == true ? <DeviceDetail></DeviceDetail> : <>
+				<div
+					className={`flex px-base py-[25px] justify-between bg-primary bg-primary rad-small items-center mt4 w-full `}
+				>
+					<DeviceSearch />
+					<DeviceAdd />
 				</div>
-			</div>
-			<Paginate />
+
+				<div className="overflow-auto hide-scroll max-w-[calc(100vw-20px)] tablet:max-w-auto">
+					<div className="min-w-[1100px]">
+						<DeviceHeader />
+						<DeviceContents />
+					</div>
+				</div>
+				<Paginate />
+			</>}
 		</div>
 	);
 };

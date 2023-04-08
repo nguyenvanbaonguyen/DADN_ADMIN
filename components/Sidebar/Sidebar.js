@@ -23,7 +23,6 @@ const Sidebar = () => {
 	const dispatch = useDispatch();
 	const sidebarContents = useSelector(getSidebarContents);
 	const selectedContent = useSelector(getSite);
-	const isOpen = useSelector(getIsOpen);
 	useEffect(() => {
 		if (!router) return;
 		let content = router.pathname.substring(1);
@@ -33,11 +32,6 @@ const Sidebar = () => {
 	}, [router.pathname]);
 	return (
 		<div
-			// className={`${
-			// 	isOpen
-			// 		? 'w-[260px] min-w-[260px]'
-			// 		: 'w-[100px] translate-x-[-260px] laptop:translate-x-0'
-			// }  h-[100vh] shadow-sidebar transition-all duration-300 fixed  z-10 laptop:relative bg-primary`}
 			className='w-[260px] min-w-[260px] h-[100vh] shadow-sidebar transition-all duration-300 fixed  z-10 laptop:relative bg-primary'
 		>
 			<HeaderSide />

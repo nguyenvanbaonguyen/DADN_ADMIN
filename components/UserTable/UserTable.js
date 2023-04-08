@@ -4,24 +4,35 @@ import UserAdd from './UserAdd';
 import UserContents from './UserContents';
 import UserHeader from './UserHeader';
 import UserSearch from './UserSearch';
+import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
+
+import {
+	getIsDetail,
+} from './userSlice';
+import UserDetail from './UserDetail';
 
 const UserTable = () => {
+	const isDetail = useSelector(getIsDetail);
+
 	return (
 		<div>
-			<div
-				className={`flex px-base py-[25px] justify-between bg-primary bg-primary rad-small items-center mt4 w-full `}
-			>
-				<UserSearch />
-				<UserAdd />
-			</div>
-
-			<div className="overflow-auto hide-scroll max-w-[calc(100vw-20px)] tablet:max-w-auto">
-				<div className="min-w-[1100px]">
-					<UserHeader />
-					<UserContents />
+			{isDetail === true ? <UserDetail></UserDetail> : <>
+				<div
+					className={`flex px-base py-[25px] justify-between bg-primary bg-primary rad-small items-center mt4 w-full `}
+				>
+					<UserSearch />
+					<UserAdd />
 				</div>
-			</div>
-			<Paginate />
+
+				<div className="overflow-auto hide-scroll max-w-[calc(100vw-20px)] tablet:max-w-auto">
+					<div className="min-w-[1100px]">
+						<UserHeader />
+						<UserContents />
+					</div>
+				</div>
+				<Paginate />
+			</>}
 		</div>
 	);
 };

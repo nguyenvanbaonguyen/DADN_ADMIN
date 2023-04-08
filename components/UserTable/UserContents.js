@@ -5,6 +5,8 @@ import ButtonActive from '../ButtonList/ButtonActive';
 import ButtonIcon from '../ButtonList/ButtonIcon';
 import ButtonTick from '../ButtonList/ButtonTick';
 import LoadingWrapper from '../Loading/LoadingWrapper';
+import { useDispatch } from 'react-redux';
+import { toggleDetail } from './userSlice';
 
 const UserContents = () => {
 	const user = {
@@ -13,7 +15,12 @@ const UserContents = () => {
 		email: 'nguyenvanbaonguyen@gmail.com',
 		status: 'ACTIVE',
 	};
+	const dispatch = useDispatch();
+
 	const list = new Array(10).fill(0);
+	const handleOnClick = () => {
+		dispatch(toggleDetail());
+	}
 	return (
 		<LoadingWrapper isLoading={false}>
 			{list.map((_, index) => (
@@ -41,7 +48,7 @@ const UserContents = () => {
 						<ButtonActive status={user.status} id={user._id} />
 					</div>
 					<div className="flex justify-center items-center">
-						<ButtonIcon icon="pen" />
+						<ButtonIcon icon="pen" action={() => handleOnClick()} />
 					</div>
 				</div>
 			))}
