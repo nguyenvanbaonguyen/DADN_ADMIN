@@ -10,6 +10,9 @@
 	.text-select {
 		@apply text-[#00A7C2];
 	}
+	.text-dan {
+		@apply text-[#D7331C];
+	}
 	.text-primary {
 		@apply text-[#000000];
 	}

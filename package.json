@@ -11,6 +11,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.7",
     "@material-tailwind/react": "^1.4.2",
+    "@react-native-async-storage/async-storage": "github:react-native-async-storage/async-storage",
     "@reduxjs/toolkit": "^1.9.1",
     "@tinymce/tinymce-react": "^4.2.0",
     "axios": "^1.2.2",
@@ -27,7 +28,8 @@
     "react-icons": "^4.7.1",
     "react-redux": "^8.0.5",
     "redux": "^4.2.1",
-    "sharp": "^0.31.3"
+    "sharp": "^0.31.3",
+    "typescript": "^5.0.4"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",

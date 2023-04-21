@@ -4,6 +4,8 @@ import LoginPage from '../Login/LoginPage';
 import Sidebar from '../Sidebar/Sidebar';
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
+import { getLogin } from '@/redux/login/loginSlice';
 
 const Layout = ({ children }) => {
 	const mainRef = useRef();
@@ -12,7 +14,7 @@ const Layout = ({ children }) => {
 		if (!mainRef.current) return;
 		mainRef.current.scrollTo({ top: 0 });
 	}, [router]);
-	const login = true;
+	const login = useSelector(getLogin);
 	return (
 		<>
 			<Head>

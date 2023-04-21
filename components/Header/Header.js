@@ -1,10 +1,17 @@
 import Image from 'next/image';
 import { toggleOpen } from '../Sidebar/sidebarSlice';
+import { useDispatch } from 'react-redux';
+import { setLogin, setNoWrong } from '@/redux/login/loginSlice';
 
 const Header = () => {
+	const dispatch = useDispatch();
+	const handleOnClick = () => {
+		dispatch(setLogin());
+		dispatch(setNoWrong())
+	}
 	return (
-		<div className="w-full h-[60px] px-base flex justify-between items-center bg-primary">
-			<div className="" onClick={() => dispatch(toggleOpen())}>
+		<div className="w-full h-[60px] px-base flex justify-between items-center bg-primary ">
+			<div className="" onClick={() => handleOnClick()}>
 				<Image
 					src="/images/icons/menu.svg"
 					height={24}
@@ -19,12 +26,12 @@ const Header = () => {
 					<Image src="/images/icons/user.svg" height={18} width={18} alt="" />
 				</div>
 
-				<div className="p-[6px] ml-[10px]">
+				<div className="p-[6px] ml-[10px] cursor-pointer" onClick={() => handleOnClick()}>
 					<Image src="/images/icons/menu.svg" height={18} width={18} alt="" />
 				</div>
 			</div>
 
-		</div>
+		</div >
 	);
 };
 
