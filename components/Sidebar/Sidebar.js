@@ -26,7 +26,6 @@ const Sidebar = () => {
 	useEffect(() => {
 		if (!router) return;
 		let content = router.pathname.substring(1);
-		if (content === 'addpost') content = 'posts';
 		if (content === '') content = 'dashboard';
 		dispatch(changeContent(content));
 	}, [router.pathname]);

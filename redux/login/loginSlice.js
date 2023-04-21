@@ -21,7 +21,8 @@ const loginSlice = createSlice({
 export const callMe = () => async (dispatch) => {
 	const res = await authApi.getUserInfo();
 	const user = res?.data?.data;
-	dispatch(setUser(user));
+	console.log('callme', res);
+	// dispatch(setUser(user));
 	return user;
 };
 
@@ -31,7 +32,7 @@ export const loginUser = (userLogin) => async (dispatch) => {
 		if (res.status !== 200) return;
 		const { token, refresh_token, expiredRefresh, expiredToken, user_info } =
 			res.data.data;
-		console.log('res', res.data)
+		console.log(res);
 		USER_TOKEN.set({
 			token,
 			expiredToken,
@@ -39,6 +40,7 @@ export const loginUser = (userLogin) => async (dispatch) => {
 			expiredRefresh,
 		});
 		dispatch(setUser(user_info));
+		dispatch(setLogin());
 		return user_info;
 	} catch (err) {
 		throw err;

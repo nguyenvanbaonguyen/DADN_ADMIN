@@ -1,24 +1,24 @@
 import React from 'react';
 import Paginate from '../Paginate/Paginate';
-import PostAdd from './PostAdd';
-import PostContents from './PostContents';
-import PostHeader from './PostHeader';
-import PostSearch from './PostSearch';
+import PetAdd from './PetAdd';
+import PetContents from './PetContents';
+import PetHeader from './PetHeader';
+import PetSearch from './PetSearch';
 
-const PostTable = () => {
+const PetTable = () => {
 	return (
 		<div>
 			<div
 				className={`flex px-base py-[25px] justify-between bg-primary bg-primary rad-small items-center mt4 w-full `}
 			>
-				<PostSearch />
-				<PostAdd />
+				<PetSearch />
+				<PetAdd />
 			</div>
 
 			<div className="overflow-auto hide-scroll max-w-[calc(100vw-20px)] tablet:max-w-auto">
 				<div className="min-w-[1100px]">
-					<PostHeader />
-					<PostContents />
+					<PetHeader />
+					<PetContents />
 				</div>
 			</div>
 			<Paginate />
@@ -26,4 +26,4 @@ const PostTable = () => {
 	);
 };
 
-export default PostTable;
+export default PetTable;

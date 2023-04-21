@@ -10,6 +10,18 @@ const authApi = {
     const url = '/api/v1/users/me';
     return axiosClient.get(url);
   },
+  getAllUser: () => {
+    const url = '/api/v1/users';
+    return axiosClient.get(url);
+  },
+  getAllDevice: () => {
+    const url = '/api/v1/devices';
+    return axiosClient.get(url);
+  },
+  getAllPet: () => {
+    const url = '/api/v1/pets';
+    return axiosClient.get(url);
+  },
 };
 
 export default authApi;

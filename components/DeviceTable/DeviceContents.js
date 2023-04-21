@@ -5,8 +5,8 @@ import ButtonActive from '../ButtonList/ButtonActive';
 import ButtonIcon from '../ButtonList/ButtonIcon';
 import ButtonTick from '../ButtonList/ButtonTick';
 import LoadingWrapper from '../Loading/LoadingWrapper';
-import { useDispatch } from 'react-redux';
-import { toggleDetail } from './deviceSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { getDevice, toggleDetail } from './deviceSlice';
 
 const DeviceContents = () => {
 	const device = {
@@ -17,28 +17,26 @@ const DeviceContents = () => {
 		status: 'ACTIVE',
 	};
 	const dispatch = useDispatch();
-
+	const allDevice = useSelector(getDevice);
 	const list = new Array(10).fill(0);
 	const handleOnClick = () => {
 		dispatch(toggleDetail());
 	}
 	return (
 		<LoadingWrapper isLoading={false}>
-			{list.map((_, index) => (
+			{allDevice.map((value, index) => (
 				<div
-					className="grid grid-cols-12 px-base mt2 py-base bg-primary text-14-17 w-full rounded-[5px] shadow-block"
+					className="grid grid-cols-11 px-base mt2 py-base bg-primary text-14-17 w-full rounded-[5px] shadow-block"
 					key={index}
 				>
-					<div className="col-span-1 flex items-center">
-						<ButtonTick index={index} />
-					</div>
+
 					<div className="col-span-1 self-center">{1 + index}</div>
-					<div className="col-span-1 text-center self-center">{device.code}</div>
-					<div className="col-span-1 text-center self-center">{device.type}</div>
-					<div className="col-span-3 text-center self-center">{device.userEmail}</div>
-					<div className="col-span-2 text-center self-center">{device.petName}</div>
+					<div className="col-span-1 text-center self-center">{value.name}</div>
+					<div className="col-span-1 text-center self-center">{value.type}</div>
+					<div className="col-span-3 text-center self-center">{value.userID}</div>
+					<div className="col-span-2 text-center self-center">{value.petID}</div>
 					<div className="col-span-2 flex justify-center">
-						<ButtonActive status={device.status} id={device._id} />
+						<ButtonActive status={value.status} id={value._id} />
 					</div>
 					<div className="col-span-1 flex justify-center items-center">
 						<ButtonIcon icon="pen" action={() => handleOnClick()} />

@@ -1,8 +1,10 @@
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import Image from 'next/image';
 import InputLogin from './components/InputLogin';
-import { getIsWrong, getLogin, getUser, loginUser, setIsWrong, setLogin } from '@/redux/login/loginSlice';
+import { getIsWrong, getUser, loginUser, setIsWrong } from '@/redux/login/loginSlice';
+import { getAllUser } from '../UserTable/userSlice';
+import { getAllDevice } from '../DeviceTable/deviceSlice';
+import { getAllPet } from '../PetTable/petSlice';
 
 const LoginPage = () => {
 	const dispatch = useDispatch();
@@ -21,9 +23,10 @@ const LoginPage = () => {
 		};
 		try {
 			await callLogin();
-			if (user_info != '') {
-				dispatch(setLogin());
-			}
+			await dispatch(getAllUser());
+			await dispatch(getAllDevice());
+			await dispatch(getAllPet());
+
 		} catch (err) {
 			dispatch(setIsWrong());
 			console.log(err)

@@ -7,7 +7,7 @@ const Header = () => {
 	const dispatch = useDispatch();
 	const handleOnClick = () => {
 		dispatch(setLogin());
-		dispatch(setNoWrong())
+		dispatch(setNoWrong());
 	}
 	return (
 		<div className="w-full h-[60px] px-base flex justify-between items-center bg-primary ">

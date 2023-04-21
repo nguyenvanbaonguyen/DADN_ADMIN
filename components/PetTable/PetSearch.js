@@ -1,7 +1,7 @@
 import SearchInput from '../Search/SearchInput';
 
-const PostSearch = () => {
+const PetSearch = () => {
 	return <SearchInput></SearchInput>;
 };
 
-export default PostSearch;
+export default PetSearch;

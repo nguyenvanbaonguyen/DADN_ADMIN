@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Popover } from '@headlessui/react';
 import { switchAction, toAction } from '@/helpers/convertAction';
 
-const PostAdd = () => {
+const PetAdd = () => {
 
     return (
         <Popover className="relative font-semibold capitalize">
@@ -15,7 +15,7 @@ const PostAdd = () => {
             </Popover.Button>
             <Popover.Panel as="div" className="absolute w-full">
                 {({ close }) => (
-                    <div>Add post</div>
+                    <div>Add pet</div>
                 )}
             </Popover.Panel>
 
@@ -23,4 +23,4 @@ const PostAdd = () => {
     )
 };
 
-export default PostAdd;
+export default PetAdd;
