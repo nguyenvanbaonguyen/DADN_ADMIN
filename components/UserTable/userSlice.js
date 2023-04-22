@@ -7,28 +7,34 @@ export const userSlice = createSlice({
     initialState: {
         isDeltail: false,
         user: [],
+        allUser: [],
     },
     reducers: {
         toggleDetail: (state) => {
             state.isDeltail = !state.isDeltail;
         },
-        setAllUser: (state, actions) => {
+        setUser: (state, actions) => {
             state.user = actions.payload;
+        },
+        setAllUser: (state, actions) => {
+            state.allUser = actions.payload;
         },
     },
 });
 
-export const getAllUser = () => async (dispatch) => {
+export const apiGetAllUser = () => async (dispatch) => {
     const res = await authApi.getAllUser();
     const user = res?.data?.data.data;
     dispatch(setAllUser(user));
+    dispatch(setUser(user));
     console.log('allUser', res);
     return user;
 };
 
-export const { toggleDetail, setAllUser } = userSlice.actions;
+export const { toggleDetail, setAllUser, setUser } = userSlice.actions;
 
 export const getUser = (state) => state?.user.user;
+export const getAllUser = (state) => state?.user.allUser;
 export const getIsDetail = (state) => state.user.isDeltail;
 
 

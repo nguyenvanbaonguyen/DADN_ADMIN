@@ -2,9 +2,9 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import InputLogin from './components/InputLogin';
 import { getIsWrong, getUser, loginUser, setIsWrong } from '@/redux/login/loginSlice';
-import { getAllUser } from '../UserTable/userSlice';
-import { getAllDevice } from '../DeviceTable/deviceSlice';
-import { getAllPet } from '../PetTable/petSlice';
+import { apiGetAllUser } from '../UserTable/userSlice';
+import { apiGetAllDevice } from '../DeviceTable/deviceSlice';
+import { apiGetAllPet } from '../PetTable/petSlice';
 
 const LoginPage = () => {
 	const dispatch = useDispatch();
@@ -23,9 +23,9 @@ const LoginPage = () => {
 		};
 		try {
 			await callLogin();
-			await dispatch(getAllUser());
-			await dispatch(getAllDevice());
-			await dispatch(getAllPet());
+			await dispatch(apiGetAllUser());
+			await dispatch(apiGetAllDevice());
+			await dispatch(apiGetAllPet());
 
 		} catch (err) {
 			dispatch(setIsWrong());
@@ -68,7 +68,7 @@ const LoginPage = () => {
 
 
 				<button
-					className={` mt4 w-full py-[12px] centreFlex text-14-17 font-bold text-slate-700 rounded bg-blue-300`}
+					className={` items-center mt-4 mb-4 py-2 px-4 bg-select hover:bg-[#00B7C2] text-white font-bold rounded w-full `}
 				>
 					Login
 				</button>
