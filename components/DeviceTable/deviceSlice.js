@@ -8,6 +8,7 @@ export const deviceSlice = createSlice({
         isDeltail: false,
         device: [],
         allDevice: [],
+        deviceDetail: '',
     },
     reducers: {
         toggleDetail: (state) => {
@@ -19,21 +20,30 @@ export const deviceSlice = createSlice({
         setDevice: (state, actions) => {
             state.device = actions.payload;
         },
+        setDeviceDetail: (state, actions) => {
+            state.deviceDetail = actions.payload;
+        },
     },
 });
-
+export const apiGetDeviceDetail = (id) => async (dispatch) => {
+    const res = await authApi.getDevice(id)
+    const device = res?.data?.data.data;
+    dispatch(setDeviceDetail(device));
+    return device;
+};
 export const apiGetAllDevice = () => async (dispatch) => {
     const res = await authApi.getAllDevice();
     const device = res?.data?.data.data;
     dispatch(setAllDevice(device));
     dispatch(setDevice(device));
-    console.log('allDevice', res);
+    console.log('AD', device);
     return device;
 };
 
-export const { toggleDetail, setAllDevice, setDevice } = deviceSlice.actions;
+export const { toggleDetail, setAllDevice, setDevice, setDeviceDetail } = deviceSlice.actions;
 
 export const getDevice = (state) => state?.device.device;
+export const getDeviceDetail = (state) => state?.device.deviceDetail;
 export const getAllDevice = (state) => state.device.allDevice;
 export const getIsDetail = (state) => state.device.isDeltail;
 

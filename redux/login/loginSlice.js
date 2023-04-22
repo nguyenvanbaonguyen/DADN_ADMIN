@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import authApi from '@/api/auth/authApi';
 import { USER_TOKEN } from '@/helpers/auth';
+import { apiGetAllDevice } from '@/components/DeviceTable/deviceSlice';
+import { apiGetAllPet } from '@/components/PetTable/petSlice';
+import { apiGetAllUser } from '@/components/UserTable/userSlice';
 
 
 const loginSlice = createSlice({
@@ -21,8 +24,15 @@ const loginSlice = createSlice({
 export const callMe = () => async (dispatch) => {
 	const res = await authApi.getUserInfo();
 	const user = res?.data?.data;
-	console.log('callme', res);
-	// dispatch(setUser(user));
+	if (user.role === 'admin') {
+		dispatch(setLogin());
+		await dispatch(apiGetAllDevice());
+		await dispatch(apiGetAllPet());
+		await dispatch(apiGetAllUser());
+	} else {
+		throw "Role must admin";
+	}
+	dispatch(setUser(user));
 	return user;
 };
 
@@ -30,17 +40,16 @@ export const loginUser = (userLogin) => async (dispatch) => {
 	try {
 		const res = await authApi.login(userLogin);
 		if (res.status !== 200) return;
-		const { token, refresh_token, expiredRefresh, expiredToken, user_info } =
+		const { token, refresh_token, expiredRefresh, expiredToken } =
 			res.data.data;
-		console.log(res);
+		const user_info = res.data.data.data.id;
 		USER_TOKEN.set({
 			token,
 			expiredToken,
 			refresh_token,
 			expiredRefresh,
 		});
-		dispatch(setUser(user_info));
-		dispatch(setLogin());
+
 		return user_info;
 	} catch (err) {
 		throw err;

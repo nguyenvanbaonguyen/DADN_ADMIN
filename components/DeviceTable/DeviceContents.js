@@ -3,23 +3,16 @@ import React from 'react';
 
 import ButtonActive from '../ButtonList/ButtonActive';
 import ButtonIcon from '../ButtonList/ButtonIcon';
-import ButtonTick from '../ButtonList/ButtonTick';
 import LoadingWrapper from '../Loading/LoadingWrapper';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDevice, toggleDetail } from './deviceSlice';
+import { apiGetDeviceDetail, getDevice, toggleDetail } from './deviceSlice';
 
 const DeviceContents = () => {
-	const device = {
-		code: 'APF-1234',
-		type: 'Auto Pet Feeder',
-		petName: 'Gau Gau',
-		userEmail: 'nguyenvanbaonguyen@gmail.com',
-		status: 'ACTIVE',
-	};
 	const dispatch = useDispatch();
 	const allDevice = useSelector(getDevice);
-	const list = new Array(10).fill(0);
-	const handleOnClick = () => {
+	const handleOnClick = (id, stt) => {
+		if (stt === 'deactivate') return;
+		dispatch(apiGetDeviceDetail(id));
 		dispatch(toggleDetail());
 	}
 	return (
@@ -39,7 +32,9 @@ const DeviceContents = () => {
 						<ButtonActive status={value.status} id={value._id} />
 					</div>
 					<div className="col-span-1 flex justify-center items-center">
-						<ButtonIcon icon="pen" action={() => handleOnClick()} />
+						<ButtonIcon icon="pen" action={() => handleOnClick(value._id, value.status)} />
+						<ButtonIcon icon="trash" />
+
 					</div>
 				</div>
 			))}

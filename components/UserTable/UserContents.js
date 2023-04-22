@@ -1,12 +1,10 @@
 import Image from 'next/image';
 import React from 'react';
 
-import ButtonActive from '../ButtonList/ButtonActive';
 import ButtonIcon from '../ButtonList/ButtonIcon';
-import ButtonTick from '../ButtonList/ButtonTick';
 import LoadingWrapper from '../Loading/LoadingWrapper';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllUser, getUser, setAllUser, toggleDetail } from './userSlice';
+import { apiGetUserDetail, getUser, toggleDetail } from './userSlice';
 
 
 const UserContents = () => {
@@ -14,7 +12,8 @@ const UserContents = () => {
 	const dispatch = useDispatch();
 	const allUser = useSelector(getUser);
 
-	const handleOnClick = () => {
+	const handleOnClick = (id) => {
+		dispatch(apiGetUserDetail(id));
 		dispatch(toggleDetail());
 	}
 	return (
@@ -33,8 +32,10 @@ const UserContents = () => {
 					<div className="col-span-3 text-center self-center">{value.email}</div>
 
 					<div className="flex justify-center items-center">
-						<ButtonIcon icon="pen" action={() => handleOnClick()} />
+						<ButtonIcon icon="pen" action={() => handleOnClick(value._id)} />
+						<ButtonIcon icon="trash" />
 					</div>
+
 				</div>
 			))}
 		</LoadingWrapper>

@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { toggleDetail } from './deviceSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { getDeviceDetail, toggleDetail } from './deviceSlice';
 
 const DeviceDetail = () => {
-    const device = {
-        name: 'Dispenser F2',
-        id: 'TM-12GERMANY',
-        type: 'Auto Pet Feeder',
-        manufacturer: 'PetCare',
-        ver: '2.91',
-    };
+    const device = useSelector(getDeviceDetail);
 
     const dispatch = useDispatch();
-
 
     const handleOnClick = () => {
         dispatch(toggleDetail());
@@ -32,29 +25,43 @@ const DeviceDetail = () => {
                         />
                     </div>
                     <div>
-                        <label htmlFor="id" className="block mb-2">Device ID</label>
+                        <label htmlFor="manufacturer" className="block  mb-2">Device type</label>
                         <input
                             type="text"
-                            id="id"
-                            value={device.id}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        />
-                    </div>
-                </div>
-                <div className="grid grid-cols-2 gap-4 mt-4">
-                    <div>
-                        <label htmlFor="type" className="block  mb-2">Device type</label>
-                        <input
-                            type="text"
-                            id="type"
+                            id="manufacturer"
                             value={device.type}
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         />
                     </div>
+
+                </div>
+                <div className="grid grid-cols-2 gap-4 mt-4">
+                    <div>
+                        <label htmlFor="type" className="block  mb-2">User ID</label>
+                        <input
+                            type="text"
+                            id="type"
+                            value={device.userID}
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        />
+                    </div>
+
+                    <div>
+                        <label htmlFor="id" className="block mb-2">Pet ID</label>
+                        <input
+                            type="text"
+                            id="id"
+                            value={device.petID}
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        />
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 mt-4">
                     <div>
                         <span className="block mb-4">Status</span>
                         <div className="flex ">
-                            <label className="inline-flex items-center mr-4">
+                            <label className="inline-flex items-center mr-4 ml-4">
                                 <input
                                     type="radio"
                                     name="options"
@@ -71,32 +78,12 @@ const DeviceDetail = () => {
                                     value="Off"
                                     className="mr-2"
                                 />
-                                <span className="text-16-20">Of</span>
+                                <span className="text-16-20">Off</span>
                             </label>
 
                         </div>
                     </div>
-                </div>
 
-                <div className="grid grid-cols-2 gap-4 mt-4">
-                    <div>
-                        <label htmlFor="manufacturer" className="block  mb-2">Manufacturer</label>
-                        <input
-                            type="text"
-                            id="manufacturer"
-                            value={device.manufacturer}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="ver" className="block mb-2">Version</label>
-                        <input
-                            type="text"
-                            id="ver"
-                            value={device.ver}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        />
-                    </div>
                 </div>
                 <div className="mt-4 text-center ">
                     <button className="items-center mt-4 mb-4 py-2 px-4 bg-select hover:bg-[#00B7C2] text-white font-bold rounded "

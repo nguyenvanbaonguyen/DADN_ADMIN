@@ -2,13 +2,16 @@ import Image from 'next/image';
 import { Popover } from '@headlessui/react';
 import { useState } from 'react';
 import { switchAction, toAction } from '@/helpers/convertAction';
+import authApi from '@/api/auth/authApi';
+import { useDispatch } from 'react-redux';
+import { apiGetAllDevice } from '../DeviceTable/deviceSlice';
 
 const ButtonActive = ({ status, id, api }) => {
 	const [action, setAction] = useState(toAction(status));
-
+	const dispatch = useDispatch();
 	const switchActive = async (action) => {
-		if (action === 'Activate') await api.activate(id);
-		else await api.deactivate(id);
+		if (action === 'Activate') await authApi.activeDevice(id);
+		else await authApi.deactiveDevice(id);
 	};
 
 	const handleChange = (closePanel) => async () => {
@@ -17,6 +20,8 @@ const ButtonActive = ({ status, id, api }) => {
 			await switchActive(newAction);
 			setAction(newAction);
 			closePanel();
+			await dispatch(apiGetAllDevice());
+
 		} catch (err) {
 			console.log(err);
 		}

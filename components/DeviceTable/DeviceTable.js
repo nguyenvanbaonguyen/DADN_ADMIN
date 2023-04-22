@@ -17,7 +17,6 @@ const DeviceTable = () => {
 					className={`flex px-base py-[25px] justify-between bg-primary bg-primary rad-small items-center mt4 w-full `}
 				>
 					<DeviceSearch />
-					<DeviceAdd />
 				</div>
 
 				<div className="overflow-auto hide-scroll max-w-[calc(100vw-20px)] tablet:max-w-auto">

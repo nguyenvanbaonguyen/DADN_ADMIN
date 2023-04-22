@@ -8,6 +8,7 @@ export const petSlice = createSlice({
         isDeltail: false,
         pet: [],
         allPet: [],
+        petDetail: '',
     },
     reducers: {
         toggleDetail: (state) => {
@@ -19,21 +20,30 @@ export const petSlice = createSlice({
         setPet: (state, actions) => {
             state.pet = actions.payload;
         },
+        setPetDetail: (state, actions) => {
+            state.petDetail = actions.payload;
+        },
     },
 });
-
+export const apiGetPetDetail = (id) => async (dispatch) => {
+    const res = await authApi.getPet(id)
+    const pet = res?.data?.data.data;
+    dispatch(setPetDetail(pet));
+    console.log(pet);
+    return pet;
+};
 export const apiGetAllPet = () => async (dispatch) => {
     const res = await authApi.getAllPet();
     const pet = res?.data?.data.data;
     dispatch(setAllPet(pet));
     dispatch(setPet(pet));
-    console.log('allPet', res);
     return pet;
 };
 
-export const { toggleDetail, setAllPet, setPet } = petSlice.actions;
+export const { toggleDetail, setAllPet, setPet, setPetDetail } = petSlice.actions;
 
 export const getPet = (state) => state?.pet.pet;
+export const getPetDetail = (state) => state?.pet.petDetail;
 export const getIsDetail = (state) => state.pet.isDeltail;
 export const getAllPet = (state) => state.pet.allPet;
 

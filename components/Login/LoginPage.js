@@ -1,10 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import InputLogin from './components/InputLogin';
-import { getIsWrong, getUser, loginUser, setIsWrong } from '@/redux/login/loginSlice';
-import { apiGetAllUser } from '../UserTable/userSlice';
-import { apiGetAllDevice } from '../DeviceTable/deviceSlice';
-import { apiGetAllPet } from '../PetTable/petSlice';
+import { callMe, getIsWrong, getUser, loginUser, setIsWrong } from '@/redux/login/loginSlice';
+
 
 const LoginPage = () => {
 	const dispatch = useDispatch();
@@ -13,20 +11,16 @@ const LoginPage = () => {
 		handleSubmit,
 		formState: { errors, isValid },
 	} = useForm();
-	const user_info = useSelector(getUser);
 	const isWrong = useSelector(getIsWrong);
 	const onSubmit = async (data) => {
 		const callLogin = async () => {
 			const { email, password } = data;
 			await dispatch(loginUser({ email, password }));
+			await dispatch(callMe());
 
 		};
 		try {
 			await callLogin();
-			await dispatch(apiGetAllUser());
-			await dispatch(apiGetAllDevice());
-			await dispatch(apiGetAllPet());
-
 		} catch (err) {
 			dispatch(setIsWrong());
 			console.log(err)

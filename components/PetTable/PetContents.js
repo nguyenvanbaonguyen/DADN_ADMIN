@@ -6,13 +6,14 @@ import ButtonIcon from '../ButtonList/ButtonIcon';
 import ButtonTick from '../ButtonList/ButtonTick';
 import LoadingWrapper from '../Loading/LoadingWrapper';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPet, toggleDetail } from './petSlice';
+import { apiGetPetDetail, getPet, toggleDetail } from './petSlice';
 
 const PetContents = () => {
 
 	const allPet = useSelector(getPet);
 	const dispatch = useDispatch();
-	const handleOnClick = () => {
+	const handleOnClick = (id) => {
+		dispatch(apiGetPetDetail(id));
 		dispatch(toggleDetail());
 	}
 	return (
@@ -29,7 +30,8 @@ const PetContents = () => {
 					<div className="col-span-3 text-center self-center">{value.userID}</div>
 
 					<div className="flex justify-center items-center">
-						<ButtonIcon icon="pen" action={() => handleOnClick()} />
+						<ButtonIcon icon="pen" action={() => handleOnClick(value._id)} />
+						<ButtonIcon icon="trash" />
 					</div>
 				</div>
 			))}
