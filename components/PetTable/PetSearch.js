@@ -15,7 +15,6 @@ const PetSearch = () => {
 		if (value == '') {
 			dispatch(setPet(allPet));
 		} else {
-			console.log(value);
 			const pet = allPet.filter((val) => {
 				return val.name.search(value) != -1;
 			})

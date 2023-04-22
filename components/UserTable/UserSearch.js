@@ -16,7 +16,6 @@ const UserSearch = () => {
 		if (value == '') {
 			dispatch(setUser(allUser));
 		} else {
-			console.log(value);
 			const user = allUser.filter((val) => {
 				return val.name.search(value) != -1;
 			})

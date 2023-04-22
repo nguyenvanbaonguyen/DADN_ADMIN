@@ -15,7 +15,6 @@ const DeviceSearch = () => {
 		if (value == '') {
 			dispatch(setDevice(allDevice));
 		} else {
-			console.log(value);
 			const device = allDevice.filter((val) => {
 				return val.name.search(value) != -1;
 			})

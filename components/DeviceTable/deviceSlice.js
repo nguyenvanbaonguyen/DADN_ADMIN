@@ -36,7 +36,6 @@ export const apiGetAllDevice = () => async (dispatch) => {
     const device = res?.data?.data.data;
     dispatch(setAllDevice(device));
     dispatch(setDevice(device));
-    console.log('AD', device);
     return device;
 };
 
